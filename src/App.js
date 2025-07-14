@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+
 import './App.css';
+
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import ImportCustomer from './page/importExcel';  // Đường dẫn đúng đến file bạn đã tạo
+import CustomerRoom from './page/CustomerRoom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Khi truy cập / → chuyển hướng sang /import-customer */}
+        <Route path="/" element={<Navigate to="/import-customer" />} />
+
+        {/* Khi truy cập /import-customer → hiển thị ImportCustomer */}
+        <Route path="/import-customer" element={<ImportCustomer />} />
+
+        {/* Khi truy cập /import-room → hiển thị CustomerRoom */}
+        <Route path="/import-room" element={<CustomerRoom />} />
+      </Routes>
+    </Router>
   );
 }
 
